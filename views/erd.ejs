@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>vuerd demo</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+    </style>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/abyss.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/kimbie-dark.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/monokai.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/monokai-dimmed.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/one-dark-pro.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/red.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/solarized-dark.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/solarized-light.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/tomorrow-night-blue.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/vuerd/theme/vscode-dark.css" rel="stylesheet" /> -->
+  </head>
+  <body>
+    <erd-editor></erd-editor>
+    <script src="https://cdn.jsdelivr.net/npm/vuerd/dist/vuerd.min.js"></script>
+    <!-- or module -->
+    <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/vuerd/dist/vuerd.esm.js"></script> -->
+    <script>
+      const editor = document.querySelector('erd-editor');
+      window.addEventListener('resize', () => {
+        editor.width = window.innerWidth;
+        editor.height = window.innerHeight;
+      });
+      window.dispatchEvent(new Event('resize'));
+    </script>
+  </body>
+</html>
