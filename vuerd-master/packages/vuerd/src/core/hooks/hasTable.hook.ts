@@ -1,4 +1,4 @@
-import { TableProps } from '@/components/editor/table/Table';
+import { TableProps } from '@/components/editor/logico/table/Table';
 import { useContext } from '@/core/hooks/context.hook';
 import {
   isDraggableColumn,

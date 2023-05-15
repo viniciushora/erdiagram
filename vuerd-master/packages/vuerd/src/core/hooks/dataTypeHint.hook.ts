@@ -1,7 +1,7 @@
 import { beforeMount, observable, watch } from '@vuerd/lit-observable';
 import * as R from 'ramda';
 
-import { ColumnDataTypeProps } from '@/components/editor/table/column/ColumnDataType';
+import { ColumnDataTypeProps } from '@/components/editor/logico/table/column/ColumnDataType';
 import { markToHTML } from '@/core/helper/dom.helper';
 import { databaseHints } from '@/core/sql/dataType';
 import { changeColumnDataType } from '@/engine/command/column.cmd.helper';

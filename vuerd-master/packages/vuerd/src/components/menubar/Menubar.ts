@@ -252,6 +252,44 @@ const Menubar: FunctionalComponent<MenubarProps, MenubarElement> = (
                 <vuerd-icon name="redo-alt" size="16"></vuerd-icon>
               </div>
             `
+          : canvasType === 'ERDC'
+          ? html`
+              <div
+                class="vuerd-menubar-menu"
+                data-tippy-content="Find [${keymapOptionsToString(
+                  keymap.find
+                )}]"
+                @click=${onFind}
+              >
+                <vuerd-icon name="search" size="16"></vuerd-icon>
+              </div>
+              <div
+                class=${classMap({
+                  'vuerd-menubar-menu': true,
+                  'undo-redo': true,
+                  active: hasUndo && !readonly,
+                })}
+                data-tippy-content=${`Undo [${keymapOptionsToString(
+                  keymap.undo
+                )}]`}
+                @click=${onUndo}
+              >
+                <vuerd-icon name="undo-alt" size="16"></vuerd-icon>
+              </div>
+              <div
+                class=${classMap({
+                  'vuerd-menubar-menu': true,
+                  'undo-redo': true,
+                  active: hasRedo && !readonly,
+                })}
+                data-tippy-content=${`Redo [${keymapOptionsToString(
+                  keymap.redo
+                )}]`}
+                @click=${onRedo}
+              >
+                <vuerd-icon name="redo-alt" size="16"></vuerd-icon>
+              </div>
+            `
           : canvasType === '@vuerd/builtin-grid'
           ? html`
               <div

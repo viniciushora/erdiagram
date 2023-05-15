@@ -1,5 +1,5 @@
 /* eslint-disable import/no-duplicates */
-import '@/components/editor/Input';
+import '@/components/editor/logico/Input';
 import './column/Column';
 
 import { Easing, Tween } from '@tweenjs/tween.js';

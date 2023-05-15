@@ -15,12 +15,22 @@ interface Menu {
   icon: IIcon;
 }
 
+const ERDC = {
+  title: 'Modelo Conceitual',
+  canvasType: 'ERDC',
+  icon: {
+    prefix: 'fas',
+    name: 'project-diagram',
+    size: 18,
+  },
+};
+
 const ERD = {
   title: 'Modelo Lógico',
   canvasType: 'ERD',
   icon: {
     prefix: 'fas',
-    name: 'project-diagram',
+    name: 'table',
     size: 18,
   },
 };
@@ -49,7 +59,7 @@ export function useMenubarPanels(ctx: HTMLElement) {
 
   const getMenus = () => {
     const { editorState } = contextRef.value.store;
-    const menus: Menu[] = [ERD];
+    const menus: Menu[] = [ERDC, ERD];
     [...contextPanelConfig.panels, ...editorState.panels]
       .filter(
         panel =>

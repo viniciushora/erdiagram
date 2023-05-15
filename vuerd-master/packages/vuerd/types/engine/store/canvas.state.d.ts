@@ -48,6 +48,7 @@ export type ColumnType =
 
 export type CanvasType =
   | 'ERD'
+  | 'ERDC'
   | '@vuerd/builtin-sql-ddl'
   | '@vuerd/builtin-grid'
   | '@vuerd/builtin-generator-code'

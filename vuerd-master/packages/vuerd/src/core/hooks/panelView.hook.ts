@@ -10,10 +10,12 @@ import { SIZE_MENUBAR_HEIGHT } from '@/core/layout';
 import { contextPanelConfig } from '@/core/panel';
 import { IERDEditorContext } from '@/internal-types/ERDEditorContext';
 import { ERDEditorProps } from '@@types/components/ERDEditorElement';
+import { IERDCEditorContext } from '@/internal-types/ERDCEditorContext';
+import { ERDCEditorProps } from '@@types/components/ERDCEditorElement';
 
 export function usePanelView(
-  props: ERDEditorProps,
-  { store: { editorState, canvasState } }: IERDEditorContext
+  props: ERDEditorProps | ERDCEditorProps,
+  { store: { editorState, canvasState } }: IERDEditorContext | IERDCEditorContext
 ) {
   const state = observable({ count: 0 });
   const data = {
@@ -29,7 +31,7 @@ export function usePanelView(
         !isRegExp(editorState.excludePanel, panel.key)
     );
     return (
-      canvasType !== 'ERD' && panels.some(panel => panel.key === canvasType)
+      canvasType !== 'ERD' && canvasType !== 'ERDC' && panels.some(panel => panel.key === canvasType)
     );
   };
 

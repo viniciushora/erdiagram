@@ -21,6 +21,7 @@ export const columnTypes: ColumnType[] = [
 
 export const canvasTypeList: CanvasType[] = [
   'ERD',
+  'ERDC',
   '@vuerd/builtin-sql-ddl',
   '@vuerd/builtin-grid',
   '@vuerd/builtin-generator-code',

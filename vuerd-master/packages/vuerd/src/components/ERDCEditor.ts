@@ -1,10 +1,10 @@
-import './ERDEditorProvider';
+import './ERDCEditorProvider';
 import './Icon';
 import './Sash';
 import './Contextmenu';
 import './PanelView';
 import './menubar/Menubar';
-import './editor/logico/ERD';
+import './editor/conceitual/ERD';
 import './drawer/Drawer';
 import './drawer/HelpDrawer';
 import './drawer/SettingDrawer';
@@ -25,12 +25,12 @@ import { cache } from 'lit-html/directives/cache';
 import { styleMap } from 'lit-html/directives/style-map';
 import { fromEvent } from 'rxjs';
 
-import { createdERDEditorContext } from '@/core/ERDEditorContext';
+import { createdERDCEditorContext } from '@/core/ERDCEditorContext';
 import { Bus } from '@/core/helper/eventBus.helper';
 import { useAlert } from '@/core/hooks/alert.hook';
-import { useERDEditorDrawer } from '@/core/hooks/ERDEditorDrawer.hook';
-import { useERDEditorElement } from '@/core/hooks/ERDEditorElement.hook';
-import { useERDEditorGhost } from '@/core/hooks/ERDEditorGhost.hook';
+import { useERDCEditorDrawer } from '@/core/hooks/ERDCEditorDrawer.hook';
+import { useERDCEditorElement } from '@/core/hooks/ERDCEditorElement.hook';
+import { useERDCEditorGhost } from '@/core/hooks/ERDCEditorGhost.hook';
 import { usePanelView } from '@/core/hooks/panelView.hook';
 import { usePrompt } from '@/core/hooks/prompt.hook';
 import { useUnmounted } from '@/core/hooks/unmounted.hook';
@@ -49,30 +49,30 @@ import {
   readonlyEditor$,
 } from '@/engine/command/editor.cmd.helper';
 import {
-  ERDEditorElement,
-  ERDEditorProps,
-} from '@@types/components/ERDEditorElement';
+  ERDCEditorElement,
+  ERDCEditorProps,
+} from '@@types/components/ERDCEditorElement';
 
-import { IndexStyle } from './index.style';
+import { IndexStyle } from './erdc.style';
 
-const ERDEditor: FunctionalComponent<ERDEditorProps, ERDEditorElement> = (
+const ERDCEditor: FunctionalComponent<ERDCEditorProps, ERDCEditorElement> = (
   props,
   ctx
 ) => {
-  const context = createdERDEditorContext();
+  const context = createdERDCEditorContext();
   const { store, helper, keymap, eventBus } = context;
   const editorRef = query<HTMLElement>('.vuerd-editor');
-  const { ghostTpl, ghostState, setFocus, onFocus } = useERDEditorGhost(
+  const { ghostTpl, ghostState, setFocus, onFocus } = useERDCEditorGhost(
     context,
     ctx
   );
   const { drawerTpl, closeDrawer, openHelp, openSetting, openTree } =
-    useERDEditorDrawer(props, context);
+    useERDCEditorDrawer(props, context);
   const { hasPanel, panelTpl } = usePanelView(props, context);
   const { showPrompt, promptTpl } = usePrompt();
   const { showAlert, alertTpl } = useAlert();
   const { unmountedGroup } = useUnmounted();
-  useERDEditorElement(context, ctx, { setFocus });
+  useERDCEditorElement(context, ctx, { setFocus });
   context.showPrompt = showPrompt;
   context.showAlert = showAlert;
 
@@ -207,7 +207,7 @@ const componentOptions = {
     },
   ],
   style: IndexStyle,
-  render: ERDEditor,
+  render: ERDCEditor,
 };
 
 defineComponent('vuerd-editor', componentOptions);

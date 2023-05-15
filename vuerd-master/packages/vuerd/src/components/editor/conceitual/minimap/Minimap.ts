@@ -14,7 +14,7 @@ import { classMap } from 'lit-html/directives/class-map';
 import { repeat } from 'lit-html/directives/repeat';
 import { styleMap } from 'lit-html/directives/style-map';
 
-import { relationshipTpl } from '@/components/editor/Relationship.template';
+import { relationshipTpl } from '@/components/editor/logico/Relationship.template';
 import { useContext } from '@/core/hooks/context.hook';
 import { useRenderTrigger } from '@/core/hooks/renderTrigger.hook';
 import { useUnmounted } from '@/core/hooks/unmounted.hook';
