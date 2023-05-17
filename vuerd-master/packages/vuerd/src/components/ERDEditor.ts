@@ -5,6 +5,7 @@ import './Contextmenu';
 import './PanelView';
 import './menubar/Menubar';
 import './editor/logico/ERD';
+import './editor/conceitual/ERD';
 import './drawer/Drawer';
 import './drawer/HelpDrawer';
 import './drawer/SettingDrawer';
@@ -171,8 +172,10 @@ const ERDEditor: FunctionalComponent<ERDEditorProps, ERDEditorElement> = (
             @open-tree=${openTree}
           ></vuerd-menubar>
           ${cache(
-            !hasPanel()
+            !hasPanel() && context.store.canvasState.canvasType == 'ERD'
               ? html`<vuerd-erd .width=${width} .height=${height}></vuerd-erd>`
+              :!hasPanel() && context.store.canvasState.canvasType == 'ERDC'
+              ? html`<vuerd-erd2 .width=${width} .height=${height}></vuerd-erd2>`              
               : null
           )}
           ${panelTpl()} ${drawerTpl()} ${ghostTpl} ${promptTpl()} ${alertTpl()}

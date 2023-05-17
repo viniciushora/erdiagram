@@ -21,7 +21,7 @@ import { useUnmounted } from '@/core/hooks/unmounted.hook';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-canvas': CanvasElement;
+    'vuerd-canvas2': CanvasElement;
   }
 }
 
@@ -59,7 +59,7 @@ const Canvas: FunctionalComponent<CanvasProps, CanvasElement> = (
 
     return html`
       <div
-        class="vuerd-canvas"
+        class="vuerd-canvas2"
         style=${styleMap({
           width: `${width}px`,
           height: `${height}px`,
@@ -75,7 +75,7 @@ const Canvas: FunctionalComponent<CanvasProps, CanvasElement> = (
                 table => table.id,
                 table =>
                   table.visible
-                    ? html`<vuerd-table .table=${table}></vuerd-table>`
+                    ? html`<vuerd-table2 .table=${table}></vuerd-table2>`
                     : null
               )
             : repeat(
@@ -84,9 +84,9 @@ const Canvas: FunctionalComponent<CanvasProps, CanvasElement> = (
                 table =>
                   table.visible
                     ? html`
-                        <vuerd-high-level-table
+                        <vuerd-high-level-table2
                           .table=${table}
-                        ></vuerd-high-level-table>
+                        ></vuerd-high-level-table2>
                       `
                     : null
               )
@@ -94,16 +94,16 @@ const Canvas: FunctionalComponent<CanvasProps, CanvasElement> = (
         ${repeat(
           memos,
           memo => memo.id,
-          memo => html`<vuerd-memo .memo=${memo}></vuerd-memo>`
+          memo => html`<vuerd-memo2 .memo=${memo}></vuerd-memo2>`
         )}
         ${show.relationship
-          ? html`<vuerd-canvas-svg></vuerd-canvas-svg>`
+          ? html`<vuerd-canvas-svg2></vuerd-canvas-svg2>`
           : null}
         ${drawRelationship?.start
           ? html`
-              <vuerd-draw-relationship
+              <vuerd-draw-relationship2
                 .draw=${drawRelationship}
-              ></vuerd-draw-relationship>
+              ></vuerd-draw-relationship2>
             `
           : null}
       </div>
@@ -111,7 +111,7 @@ const Canvas: FunctionalComponent<CanvasProps, CanvasElement> = (
   };
 };
 
-defineComponent('vuerd-canvas', {
+defineComponent('vuerd-canvas2', {
   shadow: false,
   render: Canvas,
 });

@@ -6,7 +6,7 @@ import {
 import { css } from '@/core/tagged';
 
 export const InputStyle = css`
-  .vuerd-input {
+  .vuerd-input2 {
     display: inline-flex;
     vertical-align: middle;
     align-items: center;
@@ -15,7 +15,7 @@ export const InputStyle = css`
     background-color: var(--vuerd-color-table);
   }
 
-  input.vuerd-input {
+  input.vuerd-input2 {
     outline: none;
     border: none;
     opacity: 0.9;
@@ -25,35 +25,35 @@ export const InputStyle = css`
     font-family: var(--vuerd-font-family);
   }
 
-  div.vuerd-input {
+  div.vuerd-input2 {
     border-bottom: solid #fff0 1.5px;
     height: ${SIZE_INPUT_EDIT_HEIGHT}px;
     cursor: default;
   }
 
-  .vuerd-input > span {
+  .vuerd-input2 > span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .vuerd-input.select {
+  .vuerd-input2.select {
     background-color: var(--vuerd-color-column-select);
   }
 
-  .vuerd-input.active {
+  .vuerd-input2.active {
     background-color: var(--vuerd-color-column-active);
   }
 
-  .vuerd-input.focus {
+  .vuerd-input2.focus {
     border-bottom: solid var(--vuerd-color-focus) 1.5px;
   }
 
-  .vuerd-input.edit {
+  .vuerd-input2.edit {
     border-bottom: solid var(--vuerd-color-edit) 1.5px;
   }
 
-  .vuerd-input.placeholder {
+  .vuerd-input2.placeholder {
     color: var(--vuerd-color-font-placeholder);
   }
 `;

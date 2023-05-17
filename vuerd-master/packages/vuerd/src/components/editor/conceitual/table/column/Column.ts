@@ -43,7 +43,7 @@ import { columnTpl } from './Column.template';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-column': ColumnElement;
+    'vuerd-column2': ColumnElement;
   }
 }
 
@@ -209,7 +209,7 @@ const Column: FunctionalComponent<ColumnProps, ColumnElement> = (
     return html`
       <div
         class=${classMap({
-          'vuerd-column': true,
+          'vuerd-column2': true,
           select: props.select,
           draggable: props.draggable,
           active: ui.active,
@@ -239,7 +239,7 @@ const Column: FunctionalComponent<ColumnProps, ColumnElement> = (
   };
 };
 
-defineComponent('vuerd-column', {
+defineComponent('vuerd-column2', {
   observedProps: [
     'tableId',
     'column',

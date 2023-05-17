@@ -15,7 +15,7 @@ import { SIZE_MIN_WIDTH } from '@/core/layout';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-input': InputElement;
+    'vuerd-input2': InputElement;
   }
 }
 
@@ -36,7 +36,7 @@ const Input: FunctionalComponent<InputProps, InputElement> = (props, ctx) => {
   const inputRef = query<HTMLInputElement>('input');
 
   const getClassMap = () => ({
-    'vuerd-input': true,
+    'vuerd-input2': true,
     placeholder: props.value.trim() === '' && !props.edit,
     focus: props.focusState && !props.edit,
     edit: props.edit,
@@ -49,7 +49,7 @@ const Input: FunctionalComponent<InputProps, InputElement> = (props, ctx) => {
 
   const onBlur = () =>
     ctx.dispatchEvent(
-      new CustomEvent('vuerd-input-blur', {
+      new CustomEvent('vuerd-input-blur2', {
         composed: true,
         bubbles: true,
       })
@@ -105,7 +105,7 @@ const Input: FunctionalComponent<InputProps, InputElement> = (props, ctx) => {
         `;
 };
 
-defineComponent('vuerd-input', {
+defineComponent('vuerd-input2', {
   observedProps: [
     {
       name: 'edit',

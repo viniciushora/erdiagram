@@ -51,7 +51,7 @@ import { DragoverColumnDetail } from './column/Column';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-table': TableElement;
+    'vuerd-table2': TableElement;
   }
 }
 
@@ -68,17 +68,17 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
   const contextRef = useContext(ctx);
   const { hasFocusState, hasEdit, hasSelectColumn, hasDraggableColumn } =
     useHasTable(props, ctx);
-  useTooltip(['.vuerd-table-button'], ctx);
-  const { resetTooltip } = useTooltip(['.vuerd-table-comment'], ctx);
+  useTooltip(['.vuerd-table-button2'], ctx);
+  const { resetTooltip } = useTooltip(['.vuerd-table-comment2'], ctx);
   const flipAnimation = new FlipAnimation(
     ctx.shadowRoot ? ctx.shadowRoot : ctx,
-    'vuerd-column',
-    'vuerd-column-move'
+    'vuerd-column2',
+    'vuerd-column-move2'
   );
   const draggable$ = new Subject<CustomEvent<DragoverColumnDetail>>();
   const { unmountedGroup } = useUnmounted();
   const state = observable({ color: '', id: props.table?.id });
-  useColorPicker('.vuerd-table-header-color', ctx, state);
+  useColorPicker('.vuerd-table-header-color2', ctx, state);
   let leftTween: Tween<{ left: number }> | null = null;
   let topTween: Tween<{ top: number }> | null = null;
 
@@ -114,7 +114,7 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
     const { store, globalEvent, eventBus } = contextRef.value;
     const { drag$ } = globalEvent;
 
-    if (!el.closest('.vuerd-button') && !el.closest('vuerd-input')) {
+    if (!el.closest('.vuerd-button2') && !el.closest('vuerd-input2')) {
       leftTween?.stop();
       topTween?.stop();
 
@@ -257,7 +257,7 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
     return html`
       <div
         class=${classMap({
-          'vuerd-table': true,
+          'vuerd-table2': true,
           active: ui.active,
         })}
         style=${styleMap({
@@ -271,33 +271,33 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
         @mousedown=${onMoveStart}
         @touchstart=${onMoveStart}
       >
-        <div class="vuerd-table-header">
+        <div class="vuerd-table-header2">
           <div
-            class="vuerd-table-header-color"
+            class="vuerd-table-header-color2"
             style=${styleMap({
               width: `${table.width() + SIZE_TABLE_PADDING * 2}px`,
               backgroundColor: ui.color ?? '',
             })}
           ></div>
-          <div class="vuerd-table-header-top">
+          <div class="vuerd-table-header-top2">
             <vuerd-icon
-              class="vuerd-button vuerd-table-button"
+              class="vuerd-button vuerd-table-button2"
               data-tippy-content=${keymapOptionsToString(keymap.removeTable)}
               name="times"
               size="12"
               @click=${onRemoveTable}
             ></vuerd-icon>
             <vuerd-icon
-              class="vuerd-button vuerd-table-button"
+              class="vuerd-button vuerd-table-button2"
               data-tippy-content=${keymapOptionsToString(keymap.addColumn)}
               name="plus"
               size="12"
               @click=${onAddColumn}
             ></vuerd-icon>
           </div>
-          <div class="vuerd-table-header-body">
+          <div class="vuerd-table-header-body2">
             <vuerd-input
-              class="vuerd-table-name"
+              class="vuerd-table-name2"
               .width=${table.ui.widthName}
               .value=${table.name}
               .focusState=${hasFocusState('tableName')}
@@ -311,7 +311,7 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
           </div>
         </div>
         <div
-          class="vuerd-table-body"
+          class="vuerd-table-body2"
           @dragenter=${onPreventDefault}
           @dragover=${onPreventDefault}
         >
@@ -320,7 +320,7 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
             column => column.id,
             column =>
               html`
-                <vuerd-column
+                <vuerd-column2
                   .tableId=${table.id}
                   .column=${column}
                   .select=${hasSelectColumn(column.id)}
@@ -344,7 +344,7 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
                   .widthDataType=${widthColumn.dataType}
                   .widthDefault=${widthColumn.default}
                   @dragover-column=${onDragoverGroupColumn}
-                ></vuerd-column>
+                ></vuerd-column2>
               `
           )}
         </div>
@@ -353,7 +353,7 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
   };
 };
 
-defineComponent('vuerd-table', {
+defineComponent('vuerd-table2', {
   observedProps: ['table'],
   shadow: false,
   render: Table,

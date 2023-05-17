@@ -2,7 +2,7 @@ import { SIZE_FONT, SIZE_MEMO_PADDING } from '@/core/layout';
 import { css } from '@/core/tagged';
 
 export const MemoStyle = css`
-  .vuerd-memo {
+  .vuerd-memo2 {
     position: absolute;
     opacity: 0.9;
     fill: #fff0;
@@ -10,22 +10,22 @@ export const MemoStyle = css`
     border-radius: 5px;
   }
 
-  .vuerd-memo:hover {
+  .vuerd-memo2:hover {
     fill: var(--vuerd-color-font);
   }
 
-  .vuerd-memo.active {
+  .vuerd-memo2.active {
     border: solid var(--vuerd-color-table-active) 1px;
     box-shadow: 0 1px 6px var(--vuerd-color-table-active);
   }
 
-  .vuerd-memo-header {
+  .vuerd-memo-header2 {
     padding: ${SIZE_MEMO_PADDING}px;
     cursor: move;
     position: relative;
   }
 
-  .vuerd-memo-header-color {
+  .vuerd-memo-header-color2 {
     position: absolute;
     width: 100%;
     height: 4px;
@@ -36,11 +36,11 @@ export const MemoStyle = css`
     cursor: pointer;
   }
 
-  .vuerd-memo-header .vuerd-button {
+  .vuerd-memo-header2 .vuerd-button2 {
     float: right;
   }
 
-  .vuerd-memo-textarea {
+  .vuerd-memo-textarea2 {
     padding: ${SIZE_MEMO_PADDING}px;
     opacity: 0.9;
     border: none;

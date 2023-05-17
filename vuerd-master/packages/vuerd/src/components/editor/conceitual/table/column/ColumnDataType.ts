@@ -19,7 +19,7 @@ import { dataTypeHintTpl } from './ColumnDataType.template';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-column-data-type': ColumnDataTypeElement;
+    'vuerd-column-data-type2': ColumnDataTypeElement;
   }
 }
 
@@ -68,7 +68,7 @@ const ColumnDataType: FunctionalComponent<
 
   const onMousedown = (event: MouseEvent) => {
     const el = event.target as HTMLElement;
-    if (props.edit && !el.closest('.vuerd-column-data-type')) {
+    if (props.edit && !el.closest('.vuerd-column-data-type2')) {
       emitBlur();
     }
   };
@@ -79,7 +79,7 @@ const ColumnDataType: FunctionalComponent<
   };
 
   const onERDMousedown = () => {
-    const erd = closestElement('.vuerd-erd', ctx);
+    const erd = closestElement('.vuerd-erd2', ctx);
     if (!erd) return;
 
     if (props.edit) {
@@ -105,7 +105,7 @@ const ColumnDataType: FunctionalComponent<
   unmounted(() => offERDMousedown());
 
   return () => html`
-    <div class="vuerd-column-data-type">
+    <div class="vuerd-column-data-type2">
       <vuerd-input
         .width=${props.width}
         .value=${props.value}
@@ -123,7 +123,7 @@ const ColumnDataType: FunctionalComponent<
   `;
 };
 
-defineComponent('vuerd-column-data-type', {
+defineComponent('vuerd-column-data-type2', {
   observedProps: [
     'edit',
     'focusState',

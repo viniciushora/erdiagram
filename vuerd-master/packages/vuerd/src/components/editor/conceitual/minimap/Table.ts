@@ -9,7 +9,7 @@ import { Table } from '@@types/engine/store/table.state';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-minimap-table': MinimapTableElement;
+    'vuerd-minimap-table2': MinimapTableElement;
   }
 }
 
@@ -29,7 +29,7 @@ const MinimapTable: FunctionalComponent<
 
   return html`
     <div
-      class="vuerd-table"
+      class="vuerd-table2"
       style=${styleMap({
         top: `${ui.top}px`,
         left: `${ui.left}px`,
@@ -41,7 +41,7 @@ const MinimapTable: FunctionalComponent<
   `;
 };
 
-defineComponent('vuerd-minimap-table', {
+defineComponent('vuerd-minimap-table2', {
   observedProps: ['table'],
   shadow: false,
   render: MinimapTable,

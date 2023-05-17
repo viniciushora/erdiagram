@@ -42,7 +42,7 @@ import { IndexStyle } from './index.style';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-erd': ERDElement;
+    'vuerd-erd2': ERDElement;
   }
 }
 
@@ -73,9 +73,9 @@ const ERD: FunctionalComponent<ERDProps, ERDElement> = (props, ctx) => {
   });
   const contextRef = useContext(ctx);
   const { unmountedGroup } = useUnmounted();
-  const { getPosition } = useMousePosition('.vuerd-erd');
-  const canvasRef = query<HTMLElement>('.vuerd-canvas');
-  const erdRef = query<HTMLElement>('.vuerd-erd');
+  const { getPosition } = useMousePosition('.vuerd-erd2');
+  const canvasRef = query<HTMLElement>('.vuerd-canvas2');
+  const erdRef = query<HTMLElement>('.vuerd-erd2');
   useERDKeymap(ctx);
   let relationshipUnsubscribe: (() => void) | null = null;
 
@@ -93,9 +93,9 @@ const ERD: FunctionalComponent<ERDProps, ERDElement> = (props, ctx) => {
     state.contextmenuX = event.clientX;
     state.contextmenuY = event.clientY;
 
-    const $table = el.closest('.vuerd-table') as HTMLElement | null;
+    const $table = el.closest('.vuerd-table2') as HTMLElement | null;
     const $relationship = el.closest(
-      '.vuerd-relationship'
+      '.vuerd-relationship2'
     ) as HTMLElement | null;
 
     if ($table) {
@@ -149,7 +149,7 @@ const ERD: FunctionalComponent<ERDProps, ERDElement> = (props, ctx) => {
 
     onCloseContextmenu();
 
-    if (!el.closest('.vuerd-table-header-color')) {
+    if (!el.closest('.vuerd-table-header-color2')) {
       eventBus.emit(Bus.ColorPicker.close);
     }
 
@@ -158,9 +158,9 @@ const ERD: FunctionalComponent<ERDProps, ERDElement> = (props, ctx) => {
     }
 
     if (
-      !el.closest('.vuerd-table') &&
-      !el.closest('.vuerd-memo') &&
-      !el.closest('.vuerd-input')
+      !el.closest('.vuerd-table2') &&
+      !el.closest('.vuerd-memo2') &&
+      !el.closest('.vuerd-input2')
     ) {
       store.dispatch(selectEndTable$(), selectEndMemo());
 
@@ -217,7 +217,7 @@ const ERD: FunctionalComponent<ERDProps, ERDElement> = (props, ctx) => {
 
     return html`
       <div
-        class="vuerd-erd"
+        class="vuerd-erd2"
         style=${styleMap({
           width: `${props.width}px`,
           height: `${props.height}px`,
@@ -234,12 +234,12 @@ const ERD: FunctionalComponent<ERDProps, ERDElement> = (props, ctx) => {
         @contextmenu=${onContextmenu}
         @wheel=${onWheel}
       >
-        <div class="vuerd-erd-background"></div>
-        <vuerd-canvas></vuerd-canvas>
-        <vuerd-minimap
+        <div class="vuerd-erd-background2"></div>
+        <vuerd-canvas2></vuerd-canvas2>
+        <vuerd-minimap2
           .width=${props.width}
           .height=${props.height}
-        ></vuerd-minimap>
+        ></vuerd-minimap2>
         ${state.dragSelect
           ? html`
               <vuerd-drag-select
@@ -259,13 +259,13 @@ const ERD: FunctionalComponent<ERDProps, ERDElement> = (props, ctx) => {
               ></vuerd-contextmenu>
             `
           : null}
-        <vuerd-find .visible=${findActive} @close=${onCloseFind}></vuerd-find>
+        <vuerd-find2 .visible=${findActive} @close=${onCloseFind}></vuerd-find2>
       </div>
     `;
   };
 };
 
-defineComponent('vuerd-erd', {
+defineComponent('vuerd-erd2', {
   observedProps: [
     {
       name: 'width',

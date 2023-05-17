@@ -22,7 +22,7 @@ import { relationshipTpl } from './Relationship.template';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-canvas-svg': CanvasSVGElement;
+    'vuerd-canvas-svg2': CanvasSVGElement;
   }
 }
 
@@ -128,7 +128,7 @@ const CanvasSVG: FunctionalComponent<CanvasSVGProps, CanvasSVGElement> = (
 
     return svg`
       <svg
-        class="vuerd-canvas-svg"
+        class="vuerd-canvas-svg2"
         style=${styleMap({
           width: `${width}px`,
           height: `${height}px`,
@@ -141,7 +141,7 @@ const CanvasSVG: FunctionalComponent<CanvasSVGProps, CanvasSVGElement> = (
           relationship.visible
             ? svg`
             <g class=${classMap({
-              'vuerd-relationship': true,
+              'vuerd-relationship2': true,
               identification:
                 relationship.identification &&
                 state.activeId !== relationship.id,
@@ -161,7 +161,7 @@ const CanvasSVG: FunctionalComponent<CanvasSVGProps, CanvasSVGElement> = (
   };
 };
 
-defineComponent('vuerd-canvas-svg', {
+defineComponent('vuerd-canvas-svg2', {
   shadow: false,
   render: CanvasSVG,
 });

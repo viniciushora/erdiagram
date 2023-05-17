@@ -1,12 +1,12 @@
 import { css } from '@/core/tagged';
 
 export const ERDStyle = css`
-  .vuerd-erd {
+  .vuerd-erd2 {
     overflow: hidden;
     position: relative;
   }
 
-  .vuerd-erd-background {
+  .vuerd-erd-background2 {
     width: 100%;
     height: 100%;
     pointer-events: none;

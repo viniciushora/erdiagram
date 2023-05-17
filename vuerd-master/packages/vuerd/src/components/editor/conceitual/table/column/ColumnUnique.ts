@@ -12,7 +12,7 @@ import { ColumnOption } from '@@types/engine/store/table.state';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-column-unique': ColumnUniqueElement;
+    'vuerd-column-unique2': ColumnUniqueElement;
   }
 }
 
@@ -32,7 +32,7 @@ const ColumnUnique: FunctionalComponent<
   return () => html`
     <div
       class=${classMap({
-        'vuerd-column-unique': true,
+        'vuerd-column-unique2': true,
         focus: props.focusState,
         checked: props.columnOption.unique,
       })}
@@ -46,7 +46,7 @@ const ColumnUnique: FunctionalComponent<
   `;
 };
 
-defineComponent('vuerd-column-unique', {
+defineComponent('vuerd-column-unique2', {
   observedProps: [
     {
       name: 'focusState',

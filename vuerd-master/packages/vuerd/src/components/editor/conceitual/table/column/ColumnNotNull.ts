@@ -11,7 +11,7 @@ import { ColumnOption } from '@@types/engine/store/table.state';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-column-not-null': ColumnNotNullElement;
+    'vuerd-column-not-null2': ColumnNotNullElement;
   }
 }
 
@@ -29,7 +29,7 @@ const ColumnNotNull: FunctionalComponent<
   html`
     <div
       class=${classMap({
-        'vuerd-column-not-null': true,
+        'vuerd-column-not-null2': true,
         focus: props.focusState,
       })}
       style=${styleMap({
@@ -40,7 +40,7 @@ const ColumnNotNull: FunctionalComponent<
     </div>
   `;
 
-defineComponent('vuerd-column-not-null', {
+defineComponent('vuerd-column-not-null2', {
   observedProps: [
     {
       name: 'focusState',

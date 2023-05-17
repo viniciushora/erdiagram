@@ -1,7 +1,7 @@
 import { css } from '@/core/tagged';
 
 export const DrawRelationshipStyle = css`
-  .vuerd-draw-relationship {
+  .vuerd-draw-relationship2 {
     position: absolute;
     top: 0;
     left: 0;

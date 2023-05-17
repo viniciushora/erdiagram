@@ -7,7 +7,7 @@ import {
 import { css } from '@/core/tagged';
 
 export const TableStyle = css`
-  .vuerd-table {
+  .vuerd-table2 {
     position: absolute;
     opacity: 0.9;
     padding: ${SIZE_TABLE_PADDING}px;
@@ -19,21 +19,22 @@ export const TableStyle = css`
     border-radius: 5px;
   }
 
-  .vuerd-table:hover {
+  .vuerd-table2:hover {
     fill: var(--vuerd-color-font);
     color: var(--vuerd-color-font);
   }
 
-  .vuerd-table.active {
+  .vuerd-table2.active {
     border: solid var(--vuerd-color-table-active) ${SIZE_TABLE_BORDER}px;
     box-shadow: 0 1px 6px var(--vuerd-color-table-active);
   }
 
-  .vuerd-table .vuerd-table-header {
+  .vuerd-table2 .vuerd-table-header2 {
     position: relative;
+    text-align:center;
   }
 
-  .vuerd-table .vuerd-table-header-color {
+  .vuerd-table2 .vuerd-table-header-color2 {
     position: absolute;
     height: 4px;
     top: -11px;
@@ -43,30 +44,34 @@ export const TableStyle = css`
     cursor: pointer;
   }
 
-  .vuerd-table .vuerd-table-header-top {
+  .vuerd-table2 .vuerd-table-header-top2 {
     overflow: hidden;
     cursor: move;
   }
 
-  .vuerd-table .vuerd-table-header-top .vuerd-button {
+  .vuerd-table2 .vuerd-table-header-top2 .vuerd-button2 {
     margin-left: 5px;
     float: right;
   }
 
-  .vuerd-table .vuerd-table-header-body {
+  .vuerd-table2 .vuerd-table-header-body2 {
     height: ${SIZE_TABLE_HEADER_BODY_HEIGHT}px;
   }
 
-  .vuerd-table .vuerd-table-header-body > vuerd-input {
+  .vuerd-table2 .vuerd-table-header-body2 > vuerd-input2 {
     float: left;
   }
 
   /* animation flip */
-  .vuerd-column-move {
+  .vuerd-column-move2 {
     transition: transform 0.3s;
   }
 
-  .vuerd-table-default:hover {
+  .vuerd-table-default2:hover {
     color: var(--vuerd-color-font-active);
+  }
+
+  .vuerd-table-name2{
+    visibility: visible;
   }
 `;

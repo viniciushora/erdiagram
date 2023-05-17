@@ -35,7 +35,7 @@ import { sashTpl } from './Memo.template';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-memo': MemoElement;
+    'vuerd-memo2': MemoElement;
   }
 }
 
@@ -53,10 +53,10 @@ const Memo: FunctionalComponent<MemoProps, MemoElement> = (props, ctx) => {
   const contextRef = useContext(ctx);
   const { onMousedownSash } = useResizeMemo(props, ctx);
   const { unmountedGroup } = useUnmounted();
-  const textareaRef = query<HTMLTextAreaElement>('.vuerd-memo-textarea');
+  const textareaRef = query<HTMLTextAreaElement>('.vuerd-memo-textarea2');
   const state = observable({ color: '' });
-  useColorPicker('.vuerd-memo-header-color', ctx, state);
-  useTooltip(['.vuerd-button'], ctx);
+  useColorPicker('.vuerd-memo-header-color2', ctx, state);
+  useTooltip(['.vuerd-button2'], ctx);
   let leftTween: Tween<{ left: number }> | null = null;
   let topTween: Tween<{ top: number }> | null = null;
 
@@ -80,9 +80,9 @@ const Memo: FunctionalComponent<MemoProps, MemoElement> = (props, ctx) => {
     const { drag$ } = globalEvent;
 
     if (
-      !el.closest('.vuerd-button') &&
-      !el.closest('vuerd-sash') &&
-      !el.closest('.vuerd-memo-textarea')
+      !el.closest('.vuerd-button2') &&
+      !el.closest('vuerd-sash2') &&
+      !el.closest('.vuerd-memo-textarea2')
     ) {
       leftTween?.stop();
       topTween?.stop();
@@ -110,7 +110,7 @@ const Memo: FunctionalComponent<MemoProps, MemoElement> = (props, ctx) => {
 
   const onBlur = () =>
     ctx.dispatchEvent(
-      new CustomEvent('vuerd-input-blur', {
+      new CustomEvent('vuerd-input-blur2', {
         composed: true,
         bubbles: true,
       })
@@ -180,7 +180,7 @@ const Memo: FunctionalComponent<MemoProps, MemoElement> = (props, ctx) => {
     return html`
       <div
         class=${classMap({
-          'vuerd-memo': true,
+          'vuerd-memo2': true,
           active: memo.ui.active,
         })}
         style=${styleMap({
@@ -193,23 +193,23 @@ const Memo: FunctionalComponent<MemoProps, MemoElement> = (props, ctx) => {
         @mousedown=${onMoveStart}
         @touchstart=${onMoveStart}
       >
-        <div class="vuerd-memo-header">
+        <div class="vuerd-memo-header2">
           <div
-            class="vuerd-memo-header-color"
+            class="vuerd-memo-header-color2"
             style=${styleMap({
               backgroundColor: memo.ui.color ?? '',
             })}
           ></div>
-          <vuerd-icon
-            class="vuerd-button"
+          <vuerd-icon2
+            class="vuerd-button2"
             name="times"
             size="12"
             data-tippy-content=${keymapOptionsToString(keymap.removeTable)}
             @click=${onRemoveMemo}
-          ></vuerd-icon>
+          ></vuerd-icon2>
         </div>
         <textarea
-          class="vuerd-memo-textarea vuerd-scrollbar"
+          class="vuerd-memo-textarea2 vuerd-scrollbar2"
           style=${styleMap({
             width: `${memo.ui.width}px`,
             height: `${memo.ui.height}px`,
@@ -227,7 +227,7 @@ const Memo: FunctionalComponent<MemoProps, MemoElement> = (props, ctx) => {
   };
 };
 
-defineComponent('vuerd-memo', {
+defineComponent('vuerd-memo2', {
   shadow: false,
   observedProps: ['memo'],
   render: Memo,

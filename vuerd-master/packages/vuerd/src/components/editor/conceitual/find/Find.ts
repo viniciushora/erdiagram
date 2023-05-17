@@ -21,7 +21,7 @@ import { hintTpl } from './Find.template';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-find': FindElement;
+    'vuerd-find2': FindElement;
   }
 }
 
@@ -37,18 +37,18 @@ const HEIGHT = 33;
 const Find: FunctionalComponent<FindProps, FindElement> = (props, ctx) => {
   const contextRef = useContext(ctx);
   const { unmountedGroup } = useUnmounted();
-  const { resetTooltip } = useTooltip(['.vuerd-button'], ctx);
+  const { resetTooltip } = useTooltip(['.vuerd-button2'], ctx);
   const { hintState, onSelectHint, onKeydown, onInput, initHints } =
     useTableHint(ctx);
   const inputRef = query<HTMLInputElement>('input');
   const state = observable({ top: 0, visible: false });
   let openTween: Tween<{ top: number }> | null = null;
   let closeTween: Tween<{ top: number }> | null = null;
-  useFlipAnimation(ctx, '.vuerd-find-table-hint', 'vuerd-find-table-hint-move');
+  useFlipAnimation(ctx, '.vuerd-find-table-hint2', 'vuerd-find-table-hint-move2');
 
   const emitBlur = () =>
     ctx.dispatchEvent(
-      new CustomEvent('vuerd-input-blur', {
+      new CustomEvent('vuerd-input-blur2', {
         composed: true,
         bubbles: true,
       })
@@ -126,13 +126,13 @@ const Find: FunctionalComponent<FindProps, FindElement> = (props, ctx) => {
     return state.visible
       ? html`
           <div
-            class="vuerd-find"
+            class="vuerd-find2"
             style=${styleMap({
               top: `${state.top}px`,
               height: `${HEIGHT}px`,
             })}
           >
-            <div class="vuerd-find-table">
+            <div class="vuerd-find-table2">
               <input
                 type="text"
                 spellcheck="false"
@@ -145,20 +145,20 @@ const Find: FunctionalComponent<FindProps, FindElement> = (props, ctx) => {
               />
               ${hintTpl({ onSelectHint }, hintState)}
             </div>
-            <vuerd-icon
+            <vuerd-icon2
               class="vuerd-button"
               data-tippy-content=${keymapStop}
               name="times"
               size="12"
               @click=${onClose}
-            ></vuerd-icon>
+            ></vuerd-icon2>
           </div>
         `
       : null;
   };
 };
 
-defineComponent('vuerd-find', {
+defineComponent('vuerd-find2', {
   observedProps: [
     {
       name: 'visible',

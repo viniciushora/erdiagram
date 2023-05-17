@@ -12,7 +12,7 @@ import { Move } from '@/internal-types/event.helper';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-minimap-handle': MinimapHandleElement;
+    'vuerd-minimap-handle2': MinimapHandleElement;
   }
 }
 
@@ -69,7 +69,7 @@ const MinimapHandle: FunctionalComponent<
 
   return () => html`
     <div
-      class="vuerd-minimap-handle"
+      class="vuerd-minimap-handle2"
       style=${styleMap(getStyleMap())}
       @mousedown=${onMoveStart}
       @touchstart=${onMoveStart}
@@ -77,7 +77,7 @@ const MinimapHandle: FunctionalComponent<
   `;
 };
 
-defineComponent('vuerd-minimap-handle', {
+defineComponent('vuerd-minimap-handle2', {
   observedProps: ['width', 'height'],
   shadow: false,
   render: MinimapHandle,

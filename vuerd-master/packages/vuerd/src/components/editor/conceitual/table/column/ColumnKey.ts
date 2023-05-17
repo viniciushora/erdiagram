@@ -9,7 +9,7 @@ import { ColumnUI } from '@@types/engine/store/table.state';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-column-key': ColumnKeyElement;
+    'vuerd-column-key2': ColumnKeyElement;
   }
 }
 
@@ -26,7 +26,7 @@ const ColumnKey: FunctionalComponent<ColumnKeyProps, ColumnKeyElement> = (
   return () => html`
     <div
       class=${classMap({
-        'vuerd-column-key': true,
+        'vuerd-column-key2': true,
         pk: props.ui.pk,
         fk: props.ui.fk,
         pfk: props.ui.pfk,
@@ -37,7 +37,7 @@ const ColumnKey: FunctionalComponent<ColumnKeyProps, ColumnKeyElement> = (
   `;
 };
 
-defineComponent('vuerd-column-key', {
+defineComponent('vuerd-column-key2', {
   observedProps: ['ui'],
   shadow: false,
   styleMap: {

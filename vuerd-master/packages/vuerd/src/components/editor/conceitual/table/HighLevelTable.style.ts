@@ -1,7 +1,7 @@
 import { css } from '@/core/tagged';
 
 export const HighLevelTableStyle = css`
-  .vuerd-high-level-table {
+  .vuerd-high-level-table2 {
     width: 100%;
     height: 100%;
     display: flex;

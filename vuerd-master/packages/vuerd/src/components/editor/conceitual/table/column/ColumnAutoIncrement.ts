@@ -12,7 +12,7 @@ import { ColumnOption } from '@@types/engine/store/table.state';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-column-auto-increment': ColumnAutoIncrementElement;
+    'vuerd-column-auto-increment2': ColumnAutoIncrementElement;
   }
 }
 
@@ -34,7 +34,7 @@ const ColumnAutoIncrement: FunctionalComponent<
   return () => html`
     <div
       class=${classMap({
-        'vuerd-column-auto-increment': true,
+        'vuerd-column-auto-increment2': true,
         focus: props.focusState,
         checked: props.columnOption.autoIncrement,
       })}
@@ -48,7 +48,7 @@ const ColumnAutoIncrement: FunctionalComponent<
   `;
 };
 
-defineComponent('vuerd-column-auto-increment', {
+defineComponent('vuerd-column-auto-increment2', {
   observedProps: [
     {
       name: 'focusState',

@@ -27,7 +27,7 @@ import { movementCanvas } from '@/engine/command/canvas.cmd.helper';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-minimap': MinimapElement;
+    'vuerd-minimap2': MinimapElement;
   }
 }
 
@@ -123,17 +123,17 @@ const Minimap: FunctionalComponent<MinimapProps, MinimapElement> = (
 
     return html`
       <div
-        class="vuerd-minimap-shadow"
+        class="vuerd-minimap-shadow2"
         style=${styleMap(getShadowStyle())}
       ></div>
       <div
-        class="vuerd-minimap"
+        class="vuerd-minimap2"
         style=${styleMap(getStyleMap())}
         @click=${onClickMove}
       >
-        <div class="vuerd-erd-background"></div>
+        <div class="vuerd-erd-background2"></div>
         <div
-          class="vuerd-canvas"
+          class="vuerd-canvas2"
           style=${styleMap({
             width: `${width}px`,
             height: `${height}px`,
@@ -146,7 +146,7 @@ const Minimap: FunctionalComponent<MinimapProps, MinimapElement> = (
             table =>
               table.visible
                 ? html`
-                    <vuerd-minimap-table .table=${table}></vuerd-minimap-table>
+                    <vuerd-minimap-table2 .table=${table}></vuerd-minimap-table2>
                   `
                 : null
           )}
@@ -154,12 +154,12 @@ const Minimap: FunctionalComponent<MinimapProps, MinimapElement> = (
             memos,
             memo => memo.id,
             memo =>
-              html`<vuerd-minimap-memo .memo=${memo}></vuerd-minimap-memo>`
+              html`<vuerd-minimap-memo2 .memo=${memo}></vuerd-minimap-memo2>`
           )}
           ${show.relationship
             ? svg`
               <svg
-                class="vuerd-canvas-svg"
+                class="vuerd-canvas-svg2"
                 style=${styleMap({
                   width: `${width}px`,
                   height: `${height}px`,
@@ -173,7 +173,7 @@ const Minimap: FunctionalComponent<MinimapProps, MinimapElement> = (
                     ? svg`
                     <g
                       class=${classMap({
-                        'vuerd-relationship': true,
+                        'vuerd-relationship2': true,
                         identification: relationship.identification,
                       })}
                     >
@@ -187,15 +187,15 @@ const Minimap: FunctionalComponent<MinimapProps, MinimapElement> = (
             : null}
         </div>
       </div>
-      <vuerd-minimap-handle
+      <vuerd-minimap-handle2
         .width=${props.width}
         .height=${props.height}
-      ></vuerd-minimap-handle>
+      ></vuerd-minimap-handle2>
     `;
   };
 };
 
-defineComponent('vuerd-minimap', {
+defineComponent('vuerd-minimap2', {
   observedProps: ['width', 'height'],
   shadow: false,
   render: Minimap,

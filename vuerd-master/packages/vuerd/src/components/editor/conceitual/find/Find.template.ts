@@ -10,7 +10,7 @@ export interface HintProps {
 }
 
 export const hintTpl = (props: HintProps, state: HintState) => html`
-  <ul class="vuerd-find-table-list">
+  <ul class="vuerd-find-table-list2">
     ${repeat(
       state.hints,
       hint => hint.id,
@@ -18,7 +18,7 @@ export const hintTpl = (props: HintProps, state: HintState) => html`
         return html`
           <li
             class=${classMap({
-              'vuerd-find-table-hint': true,
+              'vuerd-find-table-hint2': true,
               active: hint.active,
             })}
             @click=${() => props.onSelectHint(hint)}

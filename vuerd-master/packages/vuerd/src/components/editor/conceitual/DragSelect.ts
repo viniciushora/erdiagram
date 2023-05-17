@@ -21,7 +21,7 @@ import { dragSelectTable } from '@/engine/command/table.cmd.helper';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-drag-select': DragSelectElement;
+    'vuerd-drag-select2': DragSelectElement;
   }
 }
 
@@ -41,7 +41,7 @@ const DragSelect: FunctionalComponent<DragSelectProps, DragSelectElement> = (
   const { unmountedGroup } = useUnmounted();
 
   const onGlobalMouseup = () => {
-    ctx.dispatchEvent(new CustomEvent('drag-select-end'));
+    ctx.dispatchEvent(new CustomEvent('drag-select-end2'));
   };
 
   beforeMount(() => {
@@ -50,7 +50,7 @@ const DragSelect: FunctionalComponent<DragSelectProps, DragSelectElement> = (
       globalEvent: { mouseup$ },
     } = contextRef.value;
     const { canvasState } = store;
-    const erd = closestElement('.vuerd-erd', ctx);
+    const erd = closestElement('.vuerd-erd2', ctx);
     if (!erd) return;
 
     unmountedGroup.push(
@@ -128,7 +128,7 @@ const DragSelect: FunctionalComponent<DragSelectProps, DragSelectElement> = (
   return () => {
     return svg`
       <svg 
-        class="vuerd-drag-select" 
+        class="vuerd-drag-select2" 
         style=${styleMap({
           top: `${state.top}px`,
           left: `${state.left}px`,
@@ -150,7 +150,7 @@ const DragSelect: FunctionalComponent<DragSelectProps, DragSelectElement> = (
   };
 };
 
-defineComponent('vuerd-drag-select', {
+defineComponent('vuerd-drag-select2', {
   observedProps: ['x', 'y'],
   shadow: false,
   render: DragSelect,

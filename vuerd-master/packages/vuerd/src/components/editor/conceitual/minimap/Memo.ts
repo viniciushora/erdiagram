@@ -10,7 +10,7 @@ import { Memo } from '@@types/engine/store/memo.state';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-minimap-memo': MinimapMemoElement;
+    'vuerd-minimap-memo2': MinimapMemoElement;
   }
 }
 
@@ -31,7 +31,7 @@ const MinimapMemo: FunctionalComponent<MinimapMemoProps, MinimapMemoElement> =
 
     return html`
       <div
-        class="vuerd-memo"
+        class="vuerd-memo2"
         style=${styleMap({
           top: `${memo.ui.top}px`,
           left: `${memo.ui.left}px`,
@@ -43,7 +43,7 @@ const MinimapMemo: FunctionalComponent<MinimapMemoProps, MinimapMemoElement> =
     `;
   };
 
-defineComponent('vuerd-minimap-memo', {
+defineComponent('vuerd-minimap-memo2', {
   observedProps: ['memo'],
   shadow: false,
   render: MinimapMemo,

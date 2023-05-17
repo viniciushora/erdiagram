@@ -26,7 +26,7 @@ import { Table } from '@@types/engine/store/table.state';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-high-level-table': HighLevelTableElement;
+    'vuerd-high-level-table2': HighLevelTableElement;
   }
 }
 
@@ -48,7 +48,7 @@ const HighLevelTable: FunctionalComponent<
   const contextRef = useContext(ctx);
   const { unmountedGroup } = useUnmounted();
   const state = observable({ color: '' });
-  useColorPicker('.vuerd-table-header-color', ctx, state);
+  useColorPicker('.vuerd-table-header-color2', ctx, state);
   let leftTween: Tween<{ left: number }> | null = null;
   let topTween: Tween<{ top: number }> | null = null;
 
@@ -90,7 +90,7 @@ const HighLevelTable: FunctionalComponent<
     const { store, globalEvent, eventBus } = contextRef.value;
     const { drag$ } = globalEvent;
 
-    if (!el.closest('.vuerd-button') && !el.closest('vuerd-input')) {
+    if (!el.closest('.vuerd-button2') && !el.closest('vuerd-input2')) {
       leftTween?.stop();
       topTween?.stop();
 
@@ -172,9 +172,9 @@ const HighLevelTable: FunctionalComponent<
         @mousedown=${onMoveStart}
         @touchstart=${onMoveStart}
       >
-        <div class="vuerd-table-header">
+        <div class="vuerd-table-header2">
           <div
-            class="vuerd-table-header-color"
+            class="vuerd-table-header-color2"
             style=${styleMap({
               width: `${table.width() + SIZE_TABLE_PADDING * 2}px`,
               backgroundColor: ui.color ?? '',
@@ -182,7 +182,7 @@ const HighLevelTable: FunctionalComponent<
           ></div>
         </div>
         <div
-          class="vuerd-high-level-table vuerd-scrollbar"
+          class="vuerd-high-level-table2 vuerd-scrollbar2"
           style=${styleMap({
             fontSize: `${getFontSize()}px`,
           })}
@@ -194,7 +194,7 @@ const HighLevelTable: FunctionalComponent<
   };
 };
 
-defineComponent('vuerd-high-level-table', {
+defineComponent('vuerd-high-level-table2', {
   observedProps: ['table'],
   shadow: false,
   render: HighLevelTable,

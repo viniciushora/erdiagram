@@ -16,7 +16,7 @@ import { DrawRelationship as IDrawRelationship } from '@@types/engine/store/edit
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-draw-relationship': Element;
+    'vuerd-draw-relationship2': Element;
   }
 }
 
@@ -32,7 +32,7 @@ const DrawRelationship: FunctionalComponent<Props, Element> = (props, ctx) => {
 
   beforeMount(() => {
     const { store } = contextRef.value;
-    const erd = closestElement('.vuerd-erd', ctx);
+    const erd = closestElement('.vuerd-erd2', ctx);
     if (!erd) return;
 
     unmountedGroup.push(
@@ -54,7 +54,7 @@ const DrawRelationship: FunctionalComponent<Props, Element> = (props, ctx) => {
 
     return svg`
        <svg
-        class="vuerd-draw-relationship"
+        class="vuerd-draw-relationship2"
         style=${styleMap({
           width: `${canvasState.width}px`,
           height: `${canvasState.height}px`,
@@ -93,7 +93,7 @@ const DrawRelationship: FunctionalComponent<Props, Element> = (props, ctx) => {
   };
 };
 
-defineComponent('vuerd-draw-relationship', {
+defineComponent('vuerd-draw-relationship2', {
   observedProps: ['draw'],
   shadow: false,
   render: DrawRelationship,
