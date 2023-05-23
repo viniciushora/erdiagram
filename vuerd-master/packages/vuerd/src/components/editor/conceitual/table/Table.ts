@@ -296,7 +296,7 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
             ></vuerd-icon>
           </div>
           <div class="vuerd-table-header-body2">
-            <vuerd-input
+            <vuerd-input2
               class="vuerd-table-name2"
               .width=${table.ui.widthName}
               .value=${table.name}
@@ -307,46 +307,46 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
               @mousedown=${() => onFocus('tableName')}
               @dblclick=${onEdit}
               @vuerd-input-blur=${onBlur}
-            ></vuerd-input>
+            ></vuerd-input2>
           </div>
         </div>
         <div
-          class="vuerd-table-body2"
-          @dragenter=${onPreventDefault}
-          @dragover=${onPreventDefault}
-        >
-          ${repeat(
-            columns,
-            column => column.id,
-            column =>
-              html`
-                <vuerd-column2
-                  .tableId=${table.id}
-                  .column=${column}
-                  .select=${hasSelectColumn(column.id)}
-                  .draggable=${hasDraggableColumn(column.id)}
-                  .focusName=${hasFocusState('columnName', column.id)}
-                  .focusDataType=${hasFocusState('columnDataType', column.id)}
-                  .focusNotNull=${hasFocusState('columnNotNull', column.id)}
-                  .focusDefault=${hasFocusState('columnDefault', column.id)}
-                  .focusComment=${hasFocusState('columnComment', column.id)}
-                  .focusUnique=${hasFocusState('columnUnique', column.id)}
-                  .focusAutoIncrement=${hasFocusState(
-                    'columnAutoIncrement',
-                    column.id
-                  )}
-                  .editName=${hasEdit('columnName', column.id)}
-                  .editComment=${hasEdit('columnComment', column.id)}
-                  .editDataType=${hasEdit('columnDataType', column.id)}
-                  .editDefault=${hasEdit('columnDefault', column.id)}
-                  .widthName=${widthColumn.name}
-                  .widthComment=${widthColumn.comment}
-                  .widthDataType=${widthColumn.dataType}
-                  .widthDefault=${widthColumn.default}
-                  @dragover-column=${onDragoverGroupColumn}
-                ></vuerd-column2>
-              `
-          )}
+        class="vuerd-table-body2"
+        @dragenter=${onPreventDefault}
+        @dragover=${onPreventDefault}
+      >
+        ${repeat(
+          columns,
+          column => column.id,
+          column =>
+            html`
+              <vuerd-column2
+                .tableId=${table.id}
+                .column=${column}
+                .select=${hasSelectColumn(column.id)}
+                .draggable=${hasDraggableColumn(column.id)}
+                .focusName=${hasFocusState('columnName', column.id)}
+                .focusDataType=${hasFocusState('columnDataType', column.id)}
+                .focusNotNull=${hasFocusState('columnNotNull', column.id)}
+                .focusDefault=${hasFocusState('columnDefault', column.id)}
+                .focusComment=${hasFocusState('columnComment', column.id)}
+                .focusUnique=${hasFocusState('columnUnique', column.id)}
+                .focusAutoIncrement=${hasFocusState(
+                  'columnAutoIncrement',
+                  column.id
+                )}
+                .editName=${hasEdit('columnName', column.id)}
+                .editComment=${hasEdit('columnComment', column.id)}
+                .editDataType=${hasEdit('columnDataType', column.id)}
+                .editDefault=${hasEdit('columnDefault', column.id)}
+                .widthName=${widthColumn.name}
+                .widthComment=${widthColumn.comment}
+                .widthDataType=${widthColumn.dataType}
+                .widthDefault=${widthColumn.default}
+                @dragover-column=${onDragoverGroupColumn}
+              ></vuerd-column2>
+            `
+        )}
         </div>
       </div>
     `;

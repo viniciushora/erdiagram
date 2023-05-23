@@ -12,7 +12,6 @@ export const InputStyle = css`
     align-items: center;
     margin-right: ${SIZE_COLUMN_MARGIN_RIGHT}px;
     color: var(--vuerd-color-font-active);
-    background-color: var(--vuerd-color-table);
   }
 
   input.vuerd-input2 {
@@ -21,6 +20,7 @@ export const InputStyle = css`
     opacity: 0.9;
     padding: 1px 0 1px 0;
     height: 17px;
+    text-align:center;
     font-size: ${SIZE_FONT}px;
     font-family: var(--vuerd-font-family);
   }

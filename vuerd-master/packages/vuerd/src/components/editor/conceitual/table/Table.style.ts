@@ -59,7 +59,7 @@ export const TableStyle = css`
   }
 
   .vuerd-table2 .vuerd-table-header-body2 > vuerd-input2 {
-    float: left;
+    float: center;
   }
 
   /* animation flip */
@@ -73,5 +73,9 @@ export const TableStyle = css`
 
   .vuerd-table-name2{
     visibility: visible;
+  }
+
+  .vuerd-table-body2{
+    padding-left: 110%;
   }
 `;

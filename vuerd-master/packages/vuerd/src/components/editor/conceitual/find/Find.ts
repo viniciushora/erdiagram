@@ -145,13 +145,13 @@ const Find: FunctionalComponent<FindProps, FindElement> = (props, ctx) => {
               />
               ${hintTpl({ onSelectHint }, hintState)}
             </div>
-            <vuerd-icon2
+            <vuerd-icon
               class="vuerd-button"
               data-tippy-content=${keymapStop}
               name="times"
               size="12"
               @click=${onClose}
-            ></vuerd-icon2>
+            ></vuerd-icon>
           </div>
         `
       : null;

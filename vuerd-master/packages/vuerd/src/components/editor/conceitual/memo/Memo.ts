@@ -200,13 +200,13 @@ const Memo: FunctionalComponent<MemoProps, MemoElement> = (props, ctx) => {
               backgroundColor: memo.ui.color ?? '',
             })}
           ></div>
-          <vuerd-icon2
+          <vuerd-icon
             class="vuerd-button2"
             name="times"
             size="12"
             data-tippy-content=${keymapOptionsToString(keymap.removeTable)}
             @click=${onRemoveMemo}
-          ></vuerd-icon2>
+          ></vuerd-icon>
         </div>
         <textarea
           class="vuerd-memo-textarea2 vuerd-scrollbar2"

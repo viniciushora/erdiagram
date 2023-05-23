@@ -1,8 +1,4 @@
 import './ColumnKey';
-import './ColumnDataType';
-import './ColumnNotNull';
-import './ColumnUnique';
-import './ColumnAutoIncrement';
 
 import {
   beforeMount,
@@ -100,8 +96,8 @@ const Column: FunctionalComponent<ColumnProps, ColumnElement> = (
   ctx
 ) => {
   const contextRef = useContext(ctx);
-  useTooltip(['.vuerd-column-button'], ctx, { placement: 'right' });
-  const { resetTooltip } = useTooltip(['.vuerd-column-comment'], ctx, {
+  useTooltip(['.vuerd-column-button2'], ctx, { placement: 'right' });
+  const { resetTooltip } = useTooltip(['.vuerd-column-comment2'], ctx, {
     placement: 'right',
   });
   const { unmountedGroup } = useUnmounted();
@@ -220,7 +216,7 @@ const Column: FunctionalComponent<ColumnProps, ColumnElement> = (
         @dragend=${onDragend}
         @dragover=${onDragover}
       >
-        <vuerd-column-key .ui=${ui}></vuerd-column-key>
+        <vuerd-column-key2 .ui=${ui}></vuerd-column-key2>
         ${columnTpl(props, contextRef.value, {
           onInput,
           onFocus,
@@ -228,7 +224,7 @@ const Column: FunctionalComponent<ColumnProps, ColumnElement> = (
           onEdit,
         })}
         <vuerd-icon
-          class="vuerd-button vuerd-column-button"
+          class="vuerd-button2 vuerd-column-button2"
           data-tippy-content=${keymapOptionsToString(keymap.removeColumn)}
           name="times"
           size="9"

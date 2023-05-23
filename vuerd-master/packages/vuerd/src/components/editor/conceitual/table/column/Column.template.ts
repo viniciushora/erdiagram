@@ -36,7 +36,7 @@ export function columnTpl(
           return {
             columnType,
             template: html`
-              <vuerd-input
+              <vuerd-input2
                 .width=${props.widthName}
                 .value=${column.name}
                 .active=${ui.active}
@@ -49,131 +49,9 @@ export function columnTpl(
                 @mousedown=${(event: MouseEvent) =>
                   onFocus(event, 'columnName')}
                 @dblclick=${() => onEdit('columnName')}
-              ></vuerd-input>
+              ></vuerd-input2>
             `,
           };
-
-        case 'columnDefault':
-          return show.columnDefault
-            ? {
-                columnType,
-                template: html`
-                  <vuerd-input
-                    .width=${props.widthDefault}
-                    .value=${column.default}
-                    .active=${ui.active}
-                    .select=${props.select}
-                    .focusState=${props.focusDefault}
-                    .edit=${props.editDefault}
-                    placeholder="default"
-                    @vuerd-input-blur=${onBlur}
-                    @input=${(event: Event) => onInput(event, 'columnDefault')}
-                    @mousedown=${(event: MouseEvent) =>
-                      onFocus(event, 'columnDefault')}
-                    @dblclick=${() => onEdit('columnDefault')}
-                  ></vuerd-input>
-                `,
-              }
-            : null;
-
-        case 'columnComment':
-          return show.columnComment
-            ? {
-                columnType,
-                template: html`
-                  <vuerd-input
-                    class="vuerd-column-comment"
-                    .width=${props.widthComment}
-                    .value=${column.comment}
-                    .active=${ui.active}
-                    .select=${props.select}
-                    .edit=${props.editComment}
-                    .focusState=${props.focusComment}
-                    placeholder="comentário"
-                    data-tippy-content=${column.comment.trim()
-                      ? column.comment
-                      : 'comentário'}
-                    @vuerd-input-blur=${onBlur}
-                    @input=${(event: Event) => onInput(event, 'columnComment')}
-                    @mousedown=${(event: MouseEvent) =>
-                      onFocus(event, 'columnComment')}
-                    @dblclick=${() => onEdit('columnComment')}
-                  ></vuerd-input>
-                `,
-              }
-            : null;
-
-        case 'columnDataType':
-          return show.columnDataType
-            ? {
-                columnType,
-                template: html`
-                  <vuerd-column-data-type
-                    .width=${props.widthDataType}
-                    .value=${column.dataType}
-                    .active=${ui.active}
-                    .tableId=${props.tableId}
-                    .columnId=${column.id}
-                    .select=${props.select}
-                    .focusState=${props.focusDataType}
-                    .edit=${props.editDataType}
-                    @vuerd-input-blur=${onBlur}
-                    @input=${(event: Event) => onInput(event, 'columnDataType')}
-                    @mousedown=${(event: MouseEvent) =>
-                      onFocus(event, 'columnDataType')}
-                    @dblclick=${() => onEdit('columnDataType')}
-                  ></vuerd-column-data-type>
-                `,
-              }
-            : null;
-
-        case 'columnNotNull':
-          return show.columnNotNull
-            ? {
-                columnType,
-                template: html`
-                  <vuerd-column-not-null
-                    .columnOption=${column.option}
-                    .focusState=${props.focusNotNull}
-                    @mousedown=${(event: MouseEvent) =>
-                      onFocus(event, 'columnNotNull')}
-                    @dblclick=${() => onEdit('columnNotNull')}
-                  ></vuerd-column-not-null>
-                `,
-              }
-            : null;
-
-        case 'columnUnique':
-          return show.columnUnique
-            ? {
-                columnType,
-                template: html`
-                  <vuerd-column-unique
-                    .columnOption=${column.option}
-                    .focusState=${props.focusUnique}
-                    @mousedown=${(event: MouseEvent) =>
-                      onFocus(event, 'columnUnique')}
-                    @dblclick=${() => onEdit('columnUnique')}
-                  ></vuerd-column-unique>
-                `,
-              }
-            : null;
-
-        case 'columnAutoIncrement':
-          return show.columnAutoIncrement
-            ? {
-                columnType,
-                template: html`
-                  <vuerd-column-auto-increment
-                    .columnOption=${column.option}
-                    .focusState=${props.focusAutoIncrement}
-                    @mousedown=${(event: MouseEvent) =>
-                      onFocus(event, 'columnAutoIncrement')}
-                    @dblclick=${() => onEdit('columnAutoIncrement')}
-                  ></vuerd-column-auto-increment>
-                `,
-              }
-            : null;
 
         default:
           return null;

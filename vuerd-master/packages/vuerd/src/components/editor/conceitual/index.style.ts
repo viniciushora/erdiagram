@@ -12,11 +12,7 @@ import { MemoStyle } from './memo/Memo.style';
 import { MinimapStyle } from './minimap/Minimap.style';
 import { MinimapHandleStyle } from './minimap/MinimapHandle.style';
 import { ColumnStyle } from './table/column/Column.style';
-import { ColumnAutoIncrementStyle } from './table/column/ColumnAutoIncrement.style';
-import { ColumnDataTypeStyle } from './table/column/ColumnDataType.style';
 import { ColumnKeyStyle } from './table/column/ColumnKey.style';
-import { ColumnNotNullStyle } from './table/column/ColumnNotNull.style';
-import { ColumnUniqueStyle } from './table/column/ColumnUnique.style';
 import { HighLevelTableStyle } from './table/HighLevelTable.style';
 import { TableStyle } from './table/Table.style';
 
@@ -30,10 +26,6 @@ export const IndexStyle = [
   InputStyle,
   ColumnStyle,
   ColumnKeyStyle,
-  ColumnDataTypeStyle,
-  ColumnNotNullStyle,
-  ColumnUniqueStyle,
-  ColumnAutoIncrementStyle,
   DrawRelationshipStyle,
   CanvasSVGStyle,
   DragSelectStyle,

@@ -32,7 +32,7 @@ const ColumnKey: FunctionalComponent<ColumnKeyProps, ColumnKeyElement> = (
         pfk: props.ui.pfk,
       })}
     >
-      <vuerd-icon size="12" name="key"></vuerd-icon>
+      <vuerd-icon size="18" name="key"></vuerd-icon>
     </div>
   `;
 };

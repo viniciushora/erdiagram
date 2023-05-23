@@ -2,23 +2,17 @@ import { SIZE_COLUMN_MARGIN_RIGHT } from '@/core/layout';
 import { css } from '@/core/tagged';
 
 export const ColumnKeyStyle = css`
-  .vuerd-column-key {
+  .vuerd-column-key2 {
     display: flex;
     vertical-align: middle;
     align-items: center;
     fill: #fff0;
+    border-radius: 100%;
+    background-color: var(--vuerd-color-table);
     margin-right: ${SIZE_COLUMN_MARGIN_RIGHT}px;
   }
 
-  .vuerd-column-key.pk {
-    fill: var(--vuerd-color-key-pk);
-  }
-
-  .vuerd-column-key.fk {
-    fill: var(--vuerd-color-key-fk);
-  }
-
-  .vuerd-column-key.pfk {
-    fill: var(--vuerd-color-key-pfk);
+  .vuerd-column-key2.pk {
+    background-color: #000000;
   }
 `;
