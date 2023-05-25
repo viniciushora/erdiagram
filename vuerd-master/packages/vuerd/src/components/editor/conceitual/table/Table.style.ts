@@ -7,8 +7,13 @@ import {
 import { css } from '@/core/tagged';
 
 export const TableStyle = css`
+  .vuerd-table-complex{
+    display: inline-block;
+  }
+
   .vuerd-table2 {
     position: absolute;
+    display:inline-blocks;
     opacity: 0.9;
     padding: ${SIZE_TABLE_PADDING}px;
     font-size: ${SIZE_FONT}px;
@@ -76,6 +81,6 @@ export const TableStyle = css`
   }
 
   .vuerd-table-body2{
-    padding-left: 110%;
+    position:relative;
   }
 `;

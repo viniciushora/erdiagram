@@ -14,4 +14,10 @@ export const ColumnStyle = css`
   .vuerd-column2.draggable {
     opacity: 0.5;
   }
+
+  .vuerd-column2 > vuerd-icon,
+  .vuerd-column2 > vuerd-input2,
+  vuerd-column-key2 {
+    float: left;
+  }
 `;

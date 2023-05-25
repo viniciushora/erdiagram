@@ -281,14 +281,14 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
           ></div>
           <div class="vuerd-table-header-top2">
             <vuerd-icon
-              class="vuerd-button vuerd-table-button2"
+              class="vuerd-button2 vuerd-table-button2"
               data-tippy-content=${keymapOptionsToString(keymap.removeTable)}
               name="times"
               size="12"
               @click=${onRemoveTable}
             ></vuerd-icon>
             <vuerd-icon
-              class="vuerd-button vuerd-table-button2"
+              class="vuerd-button2 vuerd-table-button2"
               data-tippy-content=${keymapOptionsToString(keymap.addColumn)}
               name="plus"
               size="12"
@@ -312,9 +312,13 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
         </div>
         <div
         class="vuerd-table-body2"
+        style=${styleMap({
+          top: `${table.height() - table.height() - 20}px`,
+          left: `${table.width() + 40}px`,
+        })}
         @dragenter=${onPreventDefault}
         @dragover=${onPreventDefault}
-      >
+        >
         ${repeat(
           columns,
           column => column.id,
