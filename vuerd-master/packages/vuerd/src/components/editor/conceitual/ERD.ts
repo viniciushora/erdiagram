@@ -3,7 +3,6 @@ import './DragSelect';
 import './minimap/Minimap';
 import './find/Find';
 import './Input';
-import './table/column/Column';
 
 import {
   beforeMount,

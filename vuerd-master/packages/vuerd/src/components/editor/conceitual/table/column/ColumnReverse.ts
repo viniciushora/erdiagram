@@ -39,7 +39,7 @@ import { columnTpl } from './Column.template';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vuerd-column2': ColumnElement;
+    'vuerd-column2-reverse': ColumnElement;
   }
 }
 
@@ -203,7 +203,6 @@ const Column: FunctionalComponent<ColumnProps, ColumnElement> = (
     const { ui } = column;
 
     return html`
-      <div class="ligacao"></div>
       <div
         class=${classMap({
           'vuerd-column2': true,
@@ -217,13 +216,6 @@ const Column: FunctionalComponent<ColumnProps, ColumnElement> = (
         @dragend=${onDragend}
         @dragover=${onDragover}
       >
-        <vuerd-column-key2 .ui=${ui}></vuerd-column-key2>
-        ${columnTpl(props, contextRef.value, {
-          onInput,
-          onFocus,
-          onBlur,
-          onEdit,
-        })}
         <vuerd-icon
           class="vuerd-button2 vuerd-column-button2"
           data-tippy-content=${keymapOptionsToString(keymap.removeColumn)}
@@ -231,12 +223,20 @@ const Column: FunctionalComponent<ColumnProps, ColumnElement> = (
           size="9"
           @click=${onRemoveColumn}
         ></vuerd-icon>
+        ${columnTpl(props, contextRef.value, {
+          onInput,
+          onFocus,
+          onBlur,
+          onEdit,
+        })}
+        <vuerd-column-key2 .ui=${ui}></vuerd-column-key2>
       </div>
+      <div class="ligacao"></div>
     `;
   };
 };
 
-defineComponent('vuerd-column2', {
+defineComponent('vuerd-column2-reverse', {
   observedProps: [
     'tableId',
     'column',

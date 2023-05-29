@@ -187,6 +187,46 @@ export const createKeymap = (): Keymap => ({
       key: '2',
     },
   ],
+  changeDisplayColumnsTop: [
+    {
+      ctrlKey: true,
+      key: 'Up',
+    },
+    {
+      metaKey: true,
+      key: 'Up',
+    },
+  ],
+  changeDisplayColumnsLeft: [
+    {
+      ctrlKey: true,
+      key: 'Left',
+    },
+    {
+      metaKey: true,
+      key: 'Left',
+    },
+  ],
+  changeDisplayColumnsRight: [
+    {
+      ctrlKey: true,
+      key: 'Right',
+    },
+    {
+      metaKey: true,
+      key: 'Right',
+    },
+  ],
+  changeDisplayColumnsBottom: [
+    {
+      ctrlKey: true,
+      key: 'Down',
+    },
+    {
+      metaKey: true,
+      key: 'Down',
+    },
+  ],
   relationshipOneOnly: [
     {
       ctrlKey: true,

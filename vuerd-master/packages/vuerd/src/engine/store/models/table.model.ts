@@ -50,6 +50,7 @@ export class TableModel implements Table {
   id: string;
   name = '';
   comment = '';
+  displayColumns = 3;
   columns: Column[] = [];
   ui: TableUI = {
     active: false,
@@ -114,6 +115,9 @@ export class TableModel implements Table {
     if (width < maxWidthColumn) {
       width = maxWidthColumn;
     }
+    if ((this.displayColumns == 1 || this.displayColumns == 4)){
+      width = width;
+    } 
 
     return width;
   }
@@ -122,7 +126,18 @@ export class TableModel implements Table {
     return SIZE_TABLE_HEADER_HEIGHT + this.columns.length * SIZE_COLUMN_HEIGHT;
   }
 
+  height_concept(): number {
+    let height = SIZE_TABLE_HEADER_HEIGHT;
+
+    if (this.displayColumns >= 2 && this.displayColumns <= 3 && this.columns.length > 2){
+      height = SIZE_TABLE_HEADER_HEIGHT + (this.columns.length-2) * SIZE_COLUMN_HEIGHT;
+    }
+
+    return height;
+  }
+
   maxWidthColumn(): ColumnWidth {
     return getMaxWidthColumn(this.columns, this._show);
   }
 }
+

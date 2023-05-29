@@ -20,6 +20,7 @@ export const changeCommandTypes: CommandKey[] = [
   'table.hide',
   'table.show',
   'table.changeColor',
+  'table.changeDisplayColumns',
   // column
   'column.add',
   'column.addCustom',

@@ -107,6 +107,22 @@ const HelpDrawer: FunctionalComponent<HelpDrawerProps, HelpDrawerElement> = (
         keymap: keymapOptionsToString(keymap.removeTable),
       },
       {
+        name: 'Mover atributos para cima da tabela',
+        keymap: keymapOptionsToString(keymap.changeDisplayColumnsTop),
+      },
+      {
+        name: 'Mover atributos a esquerda da tabela',
+        keymap: keymapOptionsToString(keymap.changeDisplayColumnsLeft),
+      },
+      {
+        name: 'Mover atributos a direita da tabela',
+        keymap: keymapOptionsToString(keymap.changeDisplayColumnsRight),
+      },
+      {
+        name: 'Mover atributos para baixo da tabela',
+        keymap: keymapOptionsToString(keymap.changeDisplayColumnsBottom),
+      },
+      {
         name: 'Esconder Tabela',
         keymap: keymapOptionsToString(keymap.hideTable),
       },

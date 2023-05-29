@@ -20,4 +20,11 @@ export const ColumnStyle = css`
   vuerd-column-key2 {
     float: left;
   }
+
+  .ligacao {
+    width: 50px;
+    height:0px;
+    margin-top:9px;
+    border: 1px solid var(--vuerd-color-table);
+  }
 `;

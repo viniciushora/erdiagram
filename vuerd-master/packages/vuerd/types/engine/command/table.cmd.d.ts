@@ -13,6 +13,11 @@ export interface AddTable {
   ui: AddTableUI;
 }
 
+export interface ChangeDisplayColumnsTable {
+  tableId: string;
+  displayColumns: number;
+}
+
 export interface MoveTable {
   movementX: number;
   movementY: number;
@@ -70,4 +75,5 @@ export interface TableCommandMap {
   'table.hide': HideTable;
   'table.show': ShowTable;
   'table.changeColor': ChangeColorTable;
+  'table.changeDisplayColumns': ChangeDisplayColumnsTable;
 }

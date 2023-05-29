@@ -10,6 +10,7 @@ import { ExecuteCommand } from '@/internal-types/command';
 import {
   AddTable,
   ChangeColorTable,
+  ChangeDisplayColumnsTable,
   ChangeTableValue,
   DragSelectTable,
   HideTable,
@@ -235,6 +236,19 @@ export function executeChangeColorTable(
   });
 }
 
+export function executeChangeDisplayColumns(
+  { tableState: { tables } }: State,
+  data: ChangeDisplayColumnsTable
+) {
+  const { tableId, displayColumns } = data;
+
+  const table = getData(tables, tableId);
+
+  if (table){
+    table.displayColumns = displayColumns;
+  }
+}
+
 export const executeTableCommandMap: Record<
   keyof TableCommandMap,
   ExecuteCommand
@@ -245,6 +259,7 @@ export const executeTableCommandMap: Record<
   'table.select': executeSelectTable,
   'table.selectEnd': executeSelectEndTable,
   'table.selectAll': executeSelectAllTable,
+  'table.changeDisplayColumns': executeChangeDisplayColumns,
   'table.changeName': executeChangeTableName,
   'table.changeComment': executeChangeTableComment,
   'table.dragSelect': executeDragSelectTable,

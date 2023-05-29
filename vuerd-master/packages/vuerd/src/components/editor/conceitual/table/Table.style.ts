@@ -83,4 +83,13 @@ export const TableStyle = css`
   .vuerd-table-body2{
     position:relative;
   }
+
+  .vuerd-table-body2-vertical{
+    position:relative;
+    display: inline-block;
+  }
+
+  .vuerd-table-button-changedisplay {
+    margin-right: 200px;
+  }
 `;

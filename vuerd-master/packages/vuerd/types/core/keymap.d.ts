@@ -25,6 +25,10 @@ export interface Keymap {
   selectAllColumn: KeymapOption[];
   copyColumn: KeymapOption[];
   pasteColumn: KeymapOption[];
+  changeDisplayColumnsTop: KeymapOption[];
+  changeDisplayColumnsLeft: KeymapOption[];
+  changeDisplayColumnsRight: KeymapOption[];
+  changeDisplayColumnsBottom: KeymapOption[];
   relationshipZeroOne: KeymapOption[];
   relationshipZeroN: KeymapOption[];
   relationshipOneOnly: KeymapOption[];

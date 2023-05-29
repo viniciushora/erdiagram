@@ -9,7 +9,6 @@ export const ColumnKeyStyle = css`
     fill: #fff0;
     border-radius: 100%;
     background-color: var(--vuerd-color-table);
-    margin-right: ${SIZE_COLUMN_MARGIN_RIGHT}px;
   }
 
   .vuerd-column-key2.pk {

@@ -114,6 +114,9 @@ export const hideTable = (tableId: string) =>
 export const showTable = (tableId: string) =>
   createCommand('table.show', { tableId });
 
+export const changeDisplayColumns = (tableId: string, displayColumns: number) =>
+  createCommand('table.changeDisplayColumns', { tableId, displayColumns });
+
 export const changeColorTable = (
   { tableState: { tables }, memoState: { memos } }: Store,
   ctrlKey: boolean,

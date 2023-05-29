@@ -26,6 +26,10 @@ import {
   faTimes,
   faTree,
   faUndoAlt,
+  faArrowUp,
+  faArrowLeft,
+  faArrowRight,
+  faArrowDown
 } from '@fortawesome/free-solid-svg-icons';
 import {
   mdiAtom,
@@ -39,7 +43,7 @@ import {
   mdiPalette,
   mdiTableCog,
   mdiVectorLine,
-  mdiXml,
+  mdiXml
 } from '@mdi/js';
 import { observable } from '@vuerd/lit-observable';
 
@@ -80,6 +84,10 @@ const icons = [
   faTree,
   faPalette,
   faColumns,
+  faArrowUp,
+  faArrowLeft,
+  faArrowRight,
+  faArrowDown,
   createMDI('code-json', mdiCodeJson),
   createMDI('database', mdiDatabase),
   createMDI('database-import', mdiDatabaseImport),
@@ -91,7 +99,7 @@ const icons = [
   createMDI('xml', mdiXml),
   createMDI('dots-vertical', mdiDotsVertical),
   createMDI('vector-line', mdiVectorLine),
-  createMDI('atom', mdiAtom),
+  createMDI('atom', mdiAtom)
 ] as IconDefinition[];
 
 const iconMap: Record<string, IconDefinition> = observable({});

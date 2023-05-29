@@ -6,6 +6,7 @@ export interface TableState {
 export interface PureTable {
   id: string;
   name: string;
+  displayColumns: number;
   comment: string;
   columns: Column[];
   ui: TableUI;
@@ -15,6 +16,7 @@ export interface PureTable {
 export interface Table extends PureTable {
   width(): number;
   height(): number;
+  height_concept(): number;
   maxWidthColumn(): ColumnWidth;
 }
 

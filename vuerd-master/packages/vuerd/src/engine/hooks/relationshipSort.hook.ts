@@ -13,6 +13,7 @@ const hookKeys: CommandKey[] = [
   'table.move',
   'table.changeName',
   'table.changeComment',
+  'table.changeDisplayColumns',
   'table.sort',
   'column.add',
   'column.addCustom',

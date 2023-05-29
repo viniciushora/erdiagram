@@ -31,6 +31,11 @@ export declare function selectEndTable$(): Generator<
   CommandType<'table.selectEnd'> | CommandType<'editor.focusTableEnd'>
 >;
 
+export declare function changeDisplayColumns$(
+  tableId: string,
+  displayColumns: number
+): Generator<CommandType<'table.changeDisplayColumns'>>;
+
 export declare function addTableDefault$(
   tableId: string,
   helper: Helper

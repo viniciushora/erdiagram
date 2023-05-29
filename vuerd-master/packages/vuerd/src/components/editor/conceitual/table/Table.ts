@@ -1,6 +1,7 @@
 /* eslint-disable import/no-duplicates */
 import '@/components/editor/logico/Input';
 import './column/Column';
+import './column/ColumnReverse';
 
 import { Easing, Tween } from '@tweenjs/tween.js';
 import {
@@ -38,6 +39,7 @@ import {
   changeColorTable,
   changeTableComment,
   changeTableName,
+  changeDisplayColumns,
   moveTable,
   removeTable,
   selectTable$,
@@ -45,7 +47,7 @@ import {
 import { relationshipSort } from '@/engine/store/helper/relationship.helper';
 import { Move } from '@/internal-types/event.helper';
 import { TableType } from '@@types/engine/store/editor.state';
-import { Table } from '@@types/engine/store/table.state';
+import { Table} from '@@types/engine/store/table.state';
 
 import { DragoverColumnDetail } from './column/Column';
 
@@ -154,6 +156,11 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
     store.dispatch(editTable());
   };
 
+  const onChangeDisplayColumns = (displayType: number) => {
+    const { store } = contextRef.value;
+    store.dispatch(changeDisplayColumns(props.table.id, displayType));
+  };
+
   const onDragoverGroupColumn = (event: CustomEvent<DragoverColumnDetail>) =>
     draggable$.next(event);
 
@@ -248,11 +255,32 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
         canvasState: { show },
       },
     } = contextRef.value;
+
+    const displayOptions = [
+      {'name': 'changeDisplayColumnsTop', 'key': 1, 'keymap': keymap.changeDisplayColumnsTop, 'icon': 'arrow-up'},
+      {'name': 'changeDisplayColumnsLeft', 'key': 2, 'keymap': keymap.changeDisplayColumnsLeft, 'icon': 'arrow-left'},
+      {'name': 'changeDisplayColumnsRight', 'key': 3, 'keymap': keymap.changeDisplayColumnsRight, 'icon': 'arrow-right'},
+      {'name': 'changeDisplayColumnsBottom', 'key': 4, 'keymap': keymap.changeDisplayColumnsBottom, 'icon': 'arrow-down'}
+    ];
+
     const { table } = props;
     const { ui, columns } = table;
     const widthColumn = table.maxWidthColumn();
 
     state.id = table.id;
+
+    let top = table.height() - table.height() - 45;
+    let left = table.width() + 10;
+
+    if (table.displayColumns === 1){
+    } else if (table.displayColumns === 2){
+      top = table.height() - table.height() - 45
+      left = table.width() - table.width() - 150
+    } else if (table.displayColumns === 3){
+      top = table.height() - table.height() - 45
+      left = table.width() + 10
+    } else {
+    }
 
     return html`
       <div
@@ -265,7 +293,7 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
           left: `${ui.left}px`,
           zIndex: `${ui.zIndex}`,
           width: `${table.width()}px`,
-          height: `${table.height()}px`,
+          height: `${table.height_concept()}px`,
         })}
         data-id=${table.id}
         @mousedown=${onMoveStart}
@@ -308,18 +336,36 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
               @dblclick=${onEdit}
               @vuerd-input-blur=${onBlur}
             ></vuerd-input2>
-          </div>
+          </div
         </div>
         <div
         class="vuerd-table-body2"
         style=${styleMap({
-          top: `${table.height() - table.height() - 20}px`,
-          left: `${table.width() + 40}px`,
+          top: `${top}px`,
+          left: `${left}px`
         })}
         @dragenter=${onPreventDefault}
         @dragover=${onPreventDefault}
         >
+        <div class="vuerd-table-button-changedisplay">
         ${repeat(
+          displayOptions,
+          displayOption =>
+            displayOption.key != table.displayColumns
+            ? html`
+            <vuerd-icon
+              class="vuerd-button2 vuerd-table-button2"
+              data-tippy-content=${keymapOptionsToString(displayOption.keymap)}
+              name=${displayOption.icon}
+              size="12"
+              @click=${() => onChangeDisplayColumns(displayOption.key)}
+            ></vuerd-icon>
+            `
+            : null
+        )}
+        </div>
+        ${table.displayColumns === 1 || table.displayColumns === 3
+          ? repeat(
           columns,
           column => column.id,
           column =>
@@ -350,7 +396,41 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
                 @dragover-column=${onDragoverGroupColumn}
               ></vuerd-column2>
             `
-        )}
+        )
+          : table.displayColumns === 2 || table.displayColumns === 4
+          ? repeat(
+            columns,
+            column => column.id,
+            column =>
+              html`
+                <vuerd-column2-reverse
+                  .tableId=${table.id}
+                  .column=${column}
+                  .select=${hasSelectColumn(column.id)}
+                  .draggable=${hasDraggableColumn(column.id)}
+                  .focusName=${hasFocusState('columnName', column.id)}
+                  .focusDataType=${hasFocusState('columnDataType', column.id)}
+                  .focusNotNull=${hasFocusState('columnNotNull', column.id)}
+                  .focusDefault=${hasFocusState('columnDefault', column.id)}
+                  .focusComment=${hasFocusState('columnComment', column.id)}
+                  .focusUnique=${hasFocusState('columnUnique', column.id)}
+                  .focusAutoIncrement=${hasFocusState(
+                    'columnAutoIncrement',
+                    column.id
+                  )}
+                  .editName=${hasEdit('columnName', column.id)}
+                  .editComment=${hasEdit('columnComment', column.id)}
+                  .editDataType=${hasEdit('columnDataType', column.id)}
+                  .editDefault=${hasEdit('columnDefault', column.id)}
+                  .widthName=${widthColumn.name}
+                  .widthComment=${widthColumn.comment}
+                  .widthDataType=${widthColumn.dataType}
+                  .widthDefault=${widthColumn.default}
+                  @dragover-column=${onDragoverGroupColumn}
+                ></vuerd-column2-reverse>
+              `
+        )
+        : null }
         </div>
       </div>
     `;
