@@ -84,4 +84,10 @@ export interface IndexColumn {
   orderType: OrderType;
 }
 
+export interface TableBody {
+  top: number;
+  left: number;
+  vertical: boolean;
+}
+
 export type OrderType = 'ASC' | 'DESC';

@@ -47,7 +47,8 @@ import {
 import { relationshipSort } from '@/engine/store/helper/relationship.helper';
 import { Move } from '@/internal-types/event.helper';
 import { TableType } from '@@types/engine/store/editor.state';
-import { Table} from '@@types/engine/store/table.state';
+import { Table, TableBody} from '@@types/engine/store/table.state';
+import { RedirectColumnsButton } from '@@types/engine/store/redirectColumnsButton';
 
 import { DragoverColumnDetail } from './column/Column';
 
@@ -256,12 +257,40 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
       },
     } = contextRef.value;
 
-    const displayOptions = [
-      {'name': 'changeDisplayColumnsTop', 'key': 1, 'keymap': keymap.changeDisplayColumnsTop, 'icon': 'arrow-up'},
-      {'name': 'changeDisplayColumnsLeft', 'key': 2, 'keymap': keymap.changeDisplayColumnsLeft, 'icon': 'arrow-left'},
-      {'name': 'changeDisplayColumnsRight', 'key': 3, 'keymap': keymap.changeDisplayColumnsRight, 'icon': 'arrow-right'},
-      {'name': 'changeDisplayColumnsBottom', 'key': 4, 'keymap': keymap.changeDisplayColumnsBottom, 'icon': 'arrow-down'}
-    ];
+    const redirectColumnsTopButton: RedirectColumnsButton = {
+      name: 'changeDisplayColumnsTop',
+      key: 1,
+      keymap: keymap.changeDisplayColumnsTop,
+      icon: 'arrow-up'
+    }
+
+    const redirectColumnsLeftButton: RedirectColumnsButton = {
+      name: 'changeDisplayColumnsLeft',
+      key: 2,
+      keymap: keymap.changeDisplayColumnsLeft,
+      icon: 'arrow-left'
+    }
+
+    const redirectColumnsRightButton: RedirectColumnsButton = {
+      name: 'changeDisplayColumnsRight',
+      key: 3,
+      keymap: keymap.changeDisplayColumnsRight,
+      icon: 'arrow-right'
+    }
+
+    const redirectColumnsBottomButton: RedirectColumnsButton = {
+      name: 'changeDisplayColumnsBottom',
+      key: 4,
+      keymap: keymap.changeDisplayColumnsBottom,
+      icon: 'arrow-down'
+    }
+
+    const displayOptions: RedirectColumnsButton[] = [
+      redirectColumnsTopButton,
+      redirectColumnsLeftButton,
+      redirectColumnsRightButton,
+      redirectColumnsBottomButton
+    ]
 
     const { table } = props;
     const { ui, columns } = table;
@@ -269,25 +298,38 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
 
     state.id = table.id;
 
-    let top = table.height() - table.height() - 45;
-    let left = table.width() + 10;
-    let vertical = false;
-
-    if (table.displayColumns === 1){
-      vertical = true;
-      top = (table.height() - 2*table.height() - 39) + (table.columns.length - 1) * 10.2;
-      left = (table.width() - table.width() - 90) + (table.columns.length - 1) * 10.2;
-    } else if (table.displayColumns === 2){
-      top = table.height() - table.height() - 45;
-      left = table.width() - table.width() - 150;
-    } else if (table.displayColumns === 3){
-      top = table.height() - table.height() - 45;
-      left = table.width() + 10;
-    } else {
-      vertical = true;
-      left = (table.width() - table.width() - 90) + (table.columns.length - 1) * 10.2;
-      top = (table.height() + 22) - (table.columns.length - 1) * 30.6;
+    const displayColumnsTopSettings: TableBody = {
+      top: (table.height() - 2*table.height() - 39) + (table.columns.length - 1) * 10.2,
+      left: (table.width() - table.width() - 90) + (table.columns.length - 1) * 10.2,
+      vertical: true
     }
+
+    const displayColumnsLeftSettings: TableBody = {
+      top: table.height() - table.height() - 45,
+      left: table.width() - table.width() - 150,
+      vertical: false
+    }
+
+    const displayColumnsRightSettings: TableBody = {
+      top: table.height() - table.height() - 45,
+      left: table.width() + 10,
+      vertical: false
+    }
+
+    const displayColumnsBottomSettings: TableBody = {
+      top: (table.height() + 22) - (table.columns.length - 1) * 30.6,
+      left: (table.width() - table.width() - 90) + (table.columns.length - 1) * 10.2,
+      vertical: true
+    }
+
+    const displayColumnsSettings: TableBody[] = [
+      displayColumnsTopSettings,
+      displayColumnsLeftSettings,
+      displayColumnsRightSettings,
+      displayColumnsBottomSettings
+    ]
+
+    const displayOption: TableBody = displayColumnsSettings[table.displayColumns-1]
 
     return html`
       <div
@@ -362,10 +404,10 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
           </div
         </div>
         <div
-        class="${!vertical ? 'vuerd-table-body2' : 'vuerd-table-body2-vertical'}"
+        class="${!displayOption.vertical ? 'vuerd-table-body2' : 'vuerd-table-body2-vertical'}"
         style=${styleMap({
-          top: `${top}px`,
-          left: `${left}px`
+          top: `${displayOption.top}px`,
+          left: `${displayOption.left}px`
         })}
         @dragenter=${onPreventDefault}
         @dragover=${onPreventDefault}

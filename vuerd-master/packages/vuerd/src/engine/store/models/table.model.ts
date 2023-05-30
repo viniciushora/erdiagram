@@ -23,7 +23,7 @@ import {
   ColumnWidth,
   PureTable,
   Table,
-  TableUI,
+  TableUI
 } from '@@types/engine/store/table.state';
 
 import { getDefaultWidthColumn, getMaxWidthColumn } from './table.model.helper';
