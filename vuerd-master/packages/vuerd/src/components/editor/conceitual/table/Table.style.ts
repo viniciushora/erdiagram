@@ -85,8 +85,18 @@ export const TableStyle = css`
   }
 
   .vuerd-table-body2-vertical{
+    position: absolute;
+    transform: rotate(-90deg);
+  }
+
+  .horizontal {
+    position: absolute;
+    transform: rotate(90deg);
+  }
+
+  .vuerd-priority-button {
     position:relative;
-    display: inline-block;
+    z-index: 9999
   }
 
   .vuerd-table-button-changedisplay {

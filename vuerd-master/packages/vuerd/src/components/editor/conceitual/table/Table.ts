@@ -271,15 +271,22 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
 
     let top = table.height() - table.height() - 45;
     let left = table.width() + 10;
+    let vertical = false;
 
     if (table.displayColumns === 1){
+      vertical = true;
+      top = (table.height() - 2*table.height() - 39) + (table.columns.length - 1) * 10.2;
+      left = (table.width() - table.width() - 90) + (table.columns.length - 1) * 10.2;
     } else if (table.displayColumns === 2){
-      top = table.height() - table.height() - 45
-      left = table.width() - table.width() - 150
+      top = table.height() - table.height() - 45;
+      left = table.width() - table.width() - 150;
     } else if (table.displayColumns === 3){
-      top = table.height() - table.height() - 45
-      left = table.width() + 10
+      top = table.height() - table.height() - 45;
+      left = table.width() + 10;
     } else {
+      vertical = true;
+      left = (table.width() - table.width() - 90) + (table.columns.length - 1) * 10.2;
+      top = (table.height() + 22) - (table.columns.length - 1) * 30.6;
     }
 
     return html`
@@ -307,16 +314,32 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
               backgroundColor: ui.color ?? '',
             })}
           ></div>
+          ${repeat(
+            displayOptions,
+            displayOption =>
+              displayOption.key != table.displayColumns
+              ? html`
+              <vuerd-icon
+                class="vuerd-button2 vuerd-table-button2 vuerd-priority-button}"
+                data-tippy-content=${keymapOptionsToString(displayOption.keymap)}
+                name=${displayOption.icon}
+                size="12"
+                @click=${() => onChangeDisplayColumns(displayOption.key)}
+              ></vuerd-icon>
+              `
+              : null
+          )
+          }
           <div class="vuerd-table-header-top2">
             <vuerd-icon
-              class="vuerd-button2 vuerd-table-button2"
+              class="vuerd-button2 vuerd-table-button2 vuerd-priority-button"
               data-tippy-content=${keymapOptionsToString(keymap.removeTable)}
               name="times"
               size="12"
               @click=${onRemoveTable}
             ></vuerd-icon>
             <vuerd-icon
-              class="vuerd-button2 vuerd-table-button2"
+              class="vuerd-button2 vuerd-table-button2 vuerd-priority-button"
               data-tippy-content=${keymapOptionsToString(keymap.addColumn)}
               name="plus"
               size="12"
@@ -339,7 +362,7 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
           </div
         </div>
         <div
-        class="vuerd-table-body2"
+        class="${!vertical ? 'vuerd-table-body2' : 'vuerd-table-body2-vertical'}"
         style=${styleMap({
           top: `${top}px`,
           left: `${left}px`
@@ -348,21 +371,6 @@ const Table: FunctionalComponent<TableProps, TableElement> = (props, ctx) => {
         @dragover=${onPreventDefault}
         >
         <div class="vuerd-table-button-changedisplay">
-        ${repeat(
-          displayOptions,
-          displayOption =>
-            displayOption.key != table.displayColumns
-            ? html`
-            <vuerd-icon
-              class="vuerd-button2 vuerd-table-button2"
-              data-tippy-content=${keymapOptionsToString(displayOption.keymap)}
-              name=${displayOption.icon}
-              size="12"
-              @click=${() => onChangeDisplayColumns(displayOption.key)}
-            ></vuerd-icon>
-            `
-            : null
-        )}
         </div>
         ${table.displayColumns === 1 || table.displayColumns === 3
           ? repeat(

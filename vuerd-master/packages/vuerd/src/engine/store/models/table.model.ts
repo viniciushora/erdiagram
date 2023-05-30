@@ -115,8 +115,8 @@ export class TableModel implements Table {
     if (width < maxWidthColumn) {
       width = maxWidthColumn;
     }
-    if ((this.displayColumns == 1 || this.displayColumns == 4)){
-      width = width;
+    if ((this.displayColumns == 1 || this.displayColumns == 4) && (this.columns.length > 16)){
+      width = width + (this.columns.length-16) * SIZE_COLUMN_HEIGHT;
     } 
 
     return width;
